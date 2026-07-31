@@ -1,0 +1,58 @@
+{
+  "env": {
+    "TMPDIR": "<ADJUST: your own tmp dir, or delete this line>"
+  },
+  "permissions": {
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)"
+    ],
+    "defaultMode": "bypassPermissions"
+  },
+  "model": "sonnet",
+  "statusLine": {
+    "type": "command",
+    "command": "bash -c 'plugin_dir=$(ls -d \"${CLAUDE_CONFIG_DIR:-$HOME/.claude}\"/plugins/cache/claude-hud/claude-hud/*/ 2>/dev/null | awk -F/ '\"'\"'{ print $(NF-1) \"\\t\" $(0) }'\"'\"' | sort -t. -k1,1n -k2,2n -k3,3n -k4,4n | tail -1 | cut -f2-); exec \"<ADJUST: path to your bun binary, e.g. output of `which bun`>\" --env-file /dev/null \"${plugin_dir}src/index.ts\"'"
+  },
+  "enabledPlugins": {
+    "claude-hud@claude-hud": true,
+    "code-simplifier@claude-plugins-official": true,
+    "codex@openai-codex": true,
+    "discord@claude-plugins-official": true,
+    "frontend-design@claude-plugins-official": true,
+    "paper-writer@paper-writer": true,
+    "superpowers@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "claude-hud": {
+      "source": {
+        "source": "github",
+        "repo": "jarrodwatts/claude-hud"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "paper-writer": {
+      "source": {
+        "source": "github",
+        "repo": "Nugkta/paper-writer"
+      },
+      "autoUpdate": true
+    }
+  },
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
+  "showClearContextOnPlanAccept": true,
+  "voice": {
+    "enabled": false
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "light",
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true,
+  "voiceEnabled": false
+}
