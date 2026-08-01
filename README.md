@@ -6,6 +6,7 @@ Personal Claude Code configuration, kept here so it can be restored on any machi
 
 - `skills/deep-planning/` — user-level skill (`~/.claude/skills/deep-planning/`)
 - `claude/settings.json` — template of `~/.claude/settings.json` (plugin list, model, permissions, UI prefs)
+- `CLAUDE-mac.md` — project `CLAUDE.md` template used on the Mac (documentation standards, lab notebook protocol, general working rules)
 
 ## What's deliberately NOT in here
 
