@@ -16,9 +16,7 @@
   },
   "enabledPlugins": {
     "claude-hud@claude-hud": true,
-    "code-simplifier@claude-plugins-official": true,
     "codex@openai-codex": true,
-    "discord@claude-plugins-official": true,
     "frontend-design@claude-plugins-official": true,
     "paper-writer@paper-writer": true,
     "superpowers@claude-plugins-official": true
