@@ -1,5 +1,30 @@
 - Use the UV environment, update when new modules installed.
-- use subagents more, and different capability agents for different levels of tasks. Only use the main stream for the main task.
+- use subagents more, and different capability agents for different levels of tasks. Only use the main stream for the main task. (use sonnet 5, opus 4.8 or Fable agents)
+   - for basic coding, use sonnet. for harder coding that require complexity and code optimisation, use opus 4.8. for writing final reports and compose research idea that needs intelligence, use Fable.
+
+## Delegation policy — opus5-specialist
+
+The main Opus 4.6 agent coordinates conversation and delegates heavy reasoning to `opus5-specialist` (Opus 5).
+
+**Auto-delegate to opus5-specialist when the task involves:**
+- Substantial new implementation (>50 lines, multi-file, or tricky logic)
+- Hard debugging requiring root-cause analysis across multiple components
+- Architecture design or system-level brainstorming
+- Scientific reasoning, hypothesis evaluation, or experimental design
+- Code audit, security review, or performance analysis
+- High-stakes decisions where getting it wrong is costly
+
+**Do NOT delegate when the task is:**
+- Explanations, follow-ups, or answering questions about prior work
+- Simple edits, one-liner fixes, or config changes
+- Summarization, clarification, or ordinary conversation
+- Labbook updates or documentation-only changes
+- Tasks the user explicitly asked you to handle directly
+
+**How to handle results:**
+- Integrate the specialist's findings into the conversation — synthesize, don't just forward raw output.
+- If the specialist proposes code changes, review them before presenting to the user.
+- The user should experience a seamless conversation, not feel like they're talking to two agents.
 - when running light scripts and test, use similar command to 'srun --partition=interactive --reservation=interactive --gres=gpu:1 --time=8:00:00 --pty bash' (limit is 8 hours, 4 gpu for the interactive partition) (can also do sbatch)
    - only when running really heavy jobs, use sbatch with workq partition
    - never run heavy jobs on the login node!! including the tests (tell subagents this!!!!)
