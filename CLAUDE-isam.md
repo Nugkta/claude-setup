@@ -1,18 +1,23 @@
 - Use the UV environment, update when new modules installed.
-- use subagents more, and different capability agents for different levels of tasks. Only use the main stream for the main task. (use sonnet 5, opus 4.8 or Fable agents)
-   - for basic coding, use sonnet. for harder coding that require complexity and code optimisation, use opus 4.8. for writing final reports and compose research idea that needs intelligence, use Fable.
+- Use subagents more, and different capability agents for different levels of tasks. Only use the main stream for the main task.
+   - For implementation and coding tasks, use Sonnet 5 agents.
+   - For planning, audit, report writing, analysis, and interpretation, use Fable agents.
 
 ## Delegation policy — fable-specialist
 
-The main Opus 4.6 agent coordinates conversation and delegates heavy reasoning to `fable-specialist` (Fable).
+The main Opus 4.6 agent coordinates conversation and delegates to specialists.
 
-**Auto-delegate to fable-specialist when the task involves:**
-- Substantial new implementation (>50 lines, multi-file, or tricky logic)
-- Hard debugging requiring root-cause analysis across multiple components
-- Architecture design or system-level brainstorming
+**Auto-delegate to Fable when the task involves:**
+- Architecture design, system-level planning, or brainstorming
 - Scientific reasoning, hypothesis evaluation, or experimental design
 - Code audit, security review, or performance analysis
+- Report writing, results interpretation, or research narrative
 - High-stakes decisions where getting it wrong is costly
+
+**Auto-delegate to Sonnet 5 when the task involves:**
+- Substantial new implementation (>50 lines, multi-file, or tricky logic)
+- Hard debugging requiring root-cause analysis across multiple components
+- Refactoring, optimization, or code migration
 
 **Do NOT delegate when the task is:**
 - Explanations, follow-ups, or answering questions about prior work
