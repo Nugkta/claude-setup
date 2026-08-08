@@ -2,11 +2,11 @@
 - use subagents more, and different capability agents for different levels of tasks. Only use the main stream for the main task. (use sonnet 5, opus 4.8 or Fable agents)
    - for basic coding, use sonnet. for harder coding that require complexity and code optimisation, use opus 4.8. for writing final reports and compose research idea that needs intelligence, use Fable.
 
-## Delegation policy — opus5-specialist
+## Delegation policy — fable-specialist
 
-The main Opus 4.6 agent coordinates conversation and delegates heavy reasoning to `opus5-specialist` (Opus 5).
+The main Opus 4.6 agent coordinates conversation and delegates heavy reasoning to `fable-specialist` (Fable).
 
-**Auto-delegate to opus5-specialist when the task involves:**
+**Auto-delegate to fable-specialist when the task involves:**
 - Substantial new implementation (>50 lines, multi-file, or tricky logic)
 - Hard debugging requiring root-cause analysis across multiple components
 - Architecture design or system-level brainstorming
