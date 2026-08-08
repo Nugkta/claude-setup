@@ -30,18 +30,18 @@ The main Opus 4.6 agent coordinates conversation and delegates to specialists.
 - Integrate the specialist's findings into the conversation — synthesize, don't just forward raw output.
 - If the specialist proposes code changes, review them before presenting to the user.
 - The user should experience a seamless conversation, not feel like they're talking to two agents.
-- when running light scripts and test, use similar command to 'srun --partition=interactive --reservation=interactive --gres=gpu:1 --time=8:00:00 --pty bash' (limit is 8 hours, 4 gpu for the interactive partition) (can also do sbatch)
-   - only when running really heavy jobs, use sbatch with workq partition
+
+## General
+- when running scripts and test, use srun or sbatch with partition (cpu: interactive, multicore_small), (gpu: gpuA, gpuL)
    - never run heavy jobs on the login node!! including the tests (tell subagents this!!!!)
-- remove the short investigation files after using them.
-- always update the README after any progress made.
+- always update the labbook and readme after any progress made.
 - monitor the sbatch submitted files to fix bug if it failed.
 - never write implementation/diagnosis reports .md, just reply in the chat briefly.
-- when I say discuss interactively on something (like research plan), use more AskUserQuestion.
+- when I say discuss interactively on something (like research plan), use more AskUserQuestion. Explain the context first.
 - Try to use straightforward and clear language when I'm asking you to explain anything or when you are reporting things to me. Make some efforts to make sure Your output is reasonable in terms of the language use. 
 - Always update labbook when you have a long task and you are waiting for the queue or the task to finish.
 - Refer to labbook for information first.
-- if the training of the model takes a long time, try optimising it first.
+- if the training of the model takes a long time, try optimising it first (I/O, multi-gpu, ...).
 
 
 ## Documentation Standardss
