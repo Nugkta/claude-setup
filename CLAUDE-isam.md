@@ -67,7 +67,7 @@ The main Opus 4.6 agent coordinates conversation and delegates to specialists.
    `Slug | Status (active/done/abandoned) | Started | Last Updated | One-line Summary`.
    Rows sorted by `Last Updated` descending.
 
-2. **`docs/labbooks/<slug>.md`** — one file per study. Every slug MUST be prefixed with a numeric ID, e.g. `01-initial-dataset-curation`, `02-esm-mask-leak`. Assign the next available integer when creating a new study. Structure:
+2. **`docs/labbooks/<id>-<slug>.md`** — one file per study. Every slug MUST be prefixed with a numeric ID, e.g. `01-initial-dataset-curation`, `02-esm-mask-leak`. Assign the next available integer when creating a new study. Structure:
    - Top of file: `Hypothesis:` and `Status:` lines.
    - Below: dated entries appended in **reverse-chronological order** (newest first), each as `## YYYY-MM-DD`.
    - Each entry records three things:
@@ -76,10 +76,10 @@ The main Opus 4.6 agent coordinates conversation and delegates to specialists.
      - **What I think it means** (interpretation, with an explicit **confidence** level — e.g. low / medium / high)
 
 ### When I report progress on a study
-- Locate the matching `docs/labbooks/<slug>.md`.
+- Locate the matching `docs/labbooks/<id>-<slug>.md`.
 - Prepend a new `## YYYY-MM-DD` entry (do NOT append at the bottom — newest entries go on top, under the hypothesis/status header).
 - Update that study's `Last Updated` in `docs/metalabbook.md` and re-sort the table so it stays in `Last Updated` descending order.
 - If `Status` should change (e.g. `active` → `done`/`abandoned`), update both the labbook file header and the metalabbook row.
 
 ### When the work looks like a NEW study
-- Do NOT silently create a new slug or new labbook file. Ask me first: propose a slug (with the next numeric ID prefix, e.g. `07-new-study`), the hypothesis, and confirm before creating `docs/labbooks/<slug>.md` and adding the row to `docs/metalabbook.md`.
+- Do NOT silently create a new slug or new labbook file. Ask me first: propose a slug (with the next numeric ID prefix, e.g. `07-new-study`), the hypothesis, and confirm before creating `docs/labbooks/<id>-<slug>.md` and adding the row to `docs/metalabbook.md`.
