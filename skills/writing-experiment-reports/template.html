@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<style>
+  :root {
+    --fg: #1a1a1a;
+    --muted: #6a6a6a;
+    --bg: #ffffff;
+    --accent: #2563eb;
+    --accent-soft: #dbeafe;
+    --border: #e5e5e5;
+    --table-header: #f5f5f5;
+    --table-zebra: #fafafa;
+    --code-bg: #f6f8fa;
+    --callout-bg: #eff6ff;
+    --callout-border: #2563eb;
+    --warn-bg: #fff8e1;
+    --warn-border: #f59e0b;
+    --max-width: 78ch;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fg: #e8e8e8; --muted: #a0a0a0; --bg: #0e0e0e;
+      --accent: #60a5fa; --accent-soft: #1e3a8a;
+      --border: #2a2a2a;
+      --table-header: #1a1a1a; --table-zebra: #141414;
+      --code-bg: #161616;
+      --callout-bg: #1e2a44; --callout-border: #60a5fa;
+      --warn-bg: #2a1f00; --warn-border: #b45309;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); color: var(--fg); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.65;
+    max-width: var(--max-width);
+    margin: 2.5rem auto;
+    padding: 0 1.25rem;
+    font-size: 16px;
+  }
+  h1, h2, h3 { line-height: 1.25; margin-top: 2rem; }
+  h1 { font-size: 2rem; border-bottom: 2px solid var(--border); padding-bottom: .4rem; margin-top: 0; }
+  h2 { font-size: 1.45rem; border-bottom: 1px solid var(--border); padding-bottom: .3rem; }
+  h3 { font-size: 1.1rem; color: var(--muted); }
+  p { margin: .8rem 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .meta {
+    color: var(--muted);
+    font-size: .9rem;
+    margin: .5rem 0 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--border);
+  }
+  .meta strong { color: var(--fg); font-weight: 600; }
+  .toc {
+    background: var(--code-bg);
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--accent);
+  }
+  .toc strong { display: block; margin-bottom: .25rem; }
+  .toc ol { margin: 0; padding-left: 1.25rem; }
+  .toc li { margin: .15rem 0; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1rem 0 1.5rem;
+    font-variant-numeric: tabular-nums;
+    font-size: .95rem;
+  }
+  th, td {
+    padding: .55rem .75rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+  }
+  thead th {
+    background: var(--table-header);
+    font-weight: 600;
+    border-bottom: 2px solid var(--border);
+  }
+  tbody tr:nth-child(even) { background: var(--table-zebra); }
+  tbody tr:hover { background: var(--accent-soft); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td strong { color: var(--accent); }
+  .table-wrap { overflow-x: auto; }
+  figure {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+  figure img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: white;
+  }
+  figcaption {
+    color: var(--muted);
+    font-size: .9rem;
+    margin-top: .5rem;
+    text-align: center;
+  }
+  figcaption strong { color: var(--fg); }
+  .figure-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .figure-grid figure { margin: 0; }
+  code, pre {
+    font-family: "SF Mono", Monaco, Consolas, "Courier New", monospace;
+  }
+  code {
+    background: var(--code-bg);
+    padding: .1rem .35rem;
+    border-radius: 3px;
+    font-size: .9em;
+  }
+  pre {
+    background: var(--code-bg);
+    padding: 1rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    line-height: 1.5;
+    font-size: .9rem;
+  }
+  pre code { background: none; padding: 0; }
+  blockquote, .callout {
+    border-left: 4px solid var(--callout-border);
+    background: var(--callout-bg);
+    margin: 1rem 0;
+    padding: .75rem 1rem;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout.warning {
+    border-color: var(--warn-border);
+    background: var(--warn-bg);
+  }
+  .callout strong:first-child { display: inline-block; margin-right: .35rem; }
+  hr { border: 0; border-top: 1px solid var(--border); margin: 2rem 0; }
+  ul, ol { padding-left: 1.5rem; }
+  li { margin: .25rem 0; }
+
+  @media print {
+    body { max-width: none; margin: 0; padding: 1cm; font-size: 11pt; }
+    h1, h2 { break-after: avoid; }
+    figure, table, .callout { break-inside: avoid; }
+    a { color: inherit; text-decoration: underline; }
+    .toc { background: none; border-left: 0; padding: 0; }
+  }
+</style>
+<!-- Optional: uncomment for math support (LaTeX via MathJax)
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+-->
+</head>
+<body>
+
+<h1>{{TITLE}}</h1>
+<div class="meta">
+  <strong>Date:</strong> {{DATE}} &middot;
+  <strong>Branch / Run:</strong> {{RUN}} &middot;
+  <strong>Author:</strong> {{AUTHOR}}
+</div>
+
+<div class="toc">
+  <strong>Contents</strong>
+  <ol>
+    <li><a href="#motivation">Motivation</a></li>
+    <li><a href="#design">Design</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#analysis">Analysis</a></li>
+  </ol>
+</div>
+
+<h2 id="motivation">Motivation</h2>
+<p>{{MOTIVATION_PARAGRAPH}}</p>
+
+<h2 id="design">Design</h2>
+<p>{{DESIGN_PARAGRAPH}}</p>
+
+<h3>Configuration</h3>
+<ul>
+  <li><strong>Models:</strong> ...</li>
+  <li><strong>Data / splits:</strong> ...</li>
+  <li><strong>Seeds:</strong> ...</li>
+  <li><strong>Hardware:</strong> ...</li>
+</ul>
+
+<h2 id="results">Results</h2>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th class="num">Metric A</th>
+      <th class="num">Metric B</th>
+      <th class="num">Δ vs baseline</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Baseline</td>
+      <td class="num">0.812</td>
+      <td class="num">0.795</td>
+      <td class="num">—</td>
+    </tr>
+    <tr>
+      <td>Ours</td>
+      <td class="num"><strong>0.871</strong></td>
+      <td class="num"><strong>0.860</strong></td>
+      <td class="num"><strong>+0.059</strong></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<figure>
+  <img src="path/to/main_plot.png" alt="Main result">
+  <figcaption><strong>Figure 1.</strong> What the reader should see in this plot.</figcaption>
+</figure>
+
+<div class="figure-grid">
+  <figure>
+    <img src="path/to/plot_a.png" alt="Condition A">
+    <figcaption><strong>Figure 2a.</strong> Condition A.</figcaption>
+  </figure>
+  <figure>
+    <img src="path/to/plot_b.png" alt="Condition B">
+    <figcaption><strong>Figure 2b.</strong> Condition B.</figcaption>
+  </figure>
+</div>
+
+<h2 id="analysis">Analysis</h2>
+<p>{{ANALYSIS_PARAGRAPH}}</p>
+
+<div class="callout">
+  <strong>Headline takeaway:</strong> The single most important point of the report.
+</div>
+
+<div class="callout warning">
+  <strong>Caveat:</strong> Limitation, scope, or thing to verify before generalizing.
+</div>
+
+<h3>Follow-ups</h3>
+<ol>
+  <li>Next experiment / question to investigate.</li>
+  <li>Open issue or unresolved confound.</li>
+</ol>
+
+</body>
+</html>
