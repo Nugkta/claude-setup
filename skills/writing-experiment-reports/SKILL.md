@@ -40,23 +40,22 @@ If the user gives a path with `.html` extension or asks for an HTML/rendered/bro
 
 If you cannot tell, default to **comprehensive**. Don't ask — over-deliver.
 
-## Required Structure (all four, in order)
+## Required Structure (all five, in order)
 
-Every report — chat or file, brief or comprehensive — must include these four sections in this order:
+Every report — chat or file, brief or comprehensive — must include these five sections in this order:
 
-1. **Motivation** — Why this experiment? What question or hypothesis? What gap or prior result motivated it?
-2. **Design** — What was done? Models, data, splits, metrics, hyperparameters, protocol, hardware/seeds where relevant.
-3. **Results** — Numerical findings. Use tables when comparing ≥2 conditions. Cite plot/file paths.
-4. **Analysis** — What the results mean. Caveats, surprises vs expectations, limitations, follow-ups.
+1. **Overview** — The big picture in a few sentences: what we did, what we found, and why it matters. A reader who stops here should walk away with the headline. In brief mode, 2–3 sentences. In comprehensive mode, a short paragraph plus a bullet list of key numbers or takeaways.
+2. **Motivation** — Why this experiment? What question or hypothesis? What gap or prior result motivated it?
+3. **Design** — What was done? Models, data, splits, metrics, hyperparameters, protocol, hardware/seeds where relevant.
+4. **Results** — Numerical findings. Use tables when comparing ≥2 conditions. Cite plot/file paths.
+5. **Analysis** — What the results mean. Caveats, surprises vs expectations, limitations, follow-ups.
 
 Do **not** rename, merge, reorder, or omit sections. A report missing any of these is incomplete. "Motivation is obvious" is not an excuse — write one sentence, but write it.
-
-Also, high level explanation is critical. Include the overarching picture from the start.
 
 ## Depth Targets
 
 ### Brief mode (~150–300 words)
-- High level overall picture explanation
+- Overview: 2–3 sentences with headline finding
 - 1–3 sentences per section
 - Headline numbers only (no full tables unless ≤3 rows)
 - Skip hyperparameter dumps; note "see config" if relevant
@@ -76,7 +75,7 @@ Claude Code's defaults favor terse responses. **Reports are the exception.**
 | Default behavior | Override for reports |
 |---|---|
 | "Be concise" | Be complete |
-| Skip section headers | Always use the four headers |
+| Skip section headers | Always use the five headers |
 | Bullets over prose | Use prose for Motivation/Analysis; tables for Results |
 | "Avoid trailing summaries" | The whole task IS a summary — no apologetic trailer, but the body is full |
 | Match response length to question complexity | Match length to **mode**, not to question phrasing |
@@ -89,7 +88,7 @@ If the user asks "can you write a report on X" — the question is short, but th
 
 When writing to a `.md` file:
 - `# Title` (H1) at top, descriptive (e.g. `# Phase W: T2 fewshot follow-up`)
-- `## Motivation`, `## Design`, `## Results`, `## Analysis` for the four headers
+- `## Overview`, `## Motivation`, `## Design`, `## Results`, `## Analysis` for the five headers
 - Date and run-id/branch at the top if knowable from context
 - Proper markdown tables (pipes), not ASCII art
 - Cross-link other files with relative paths
@@ -106,8 +105,8 @@ Required structure:
 - `<title>` matching the report title
 - Inline `<style>` block (use the template's CSS — don't reinvent)
 - `<h1>` title at top, `<div class="meta">` line with date / branch / author
-- `<div class="toc">` with anchor links to the four sections
-- `<h2 id="motivation">`, `<h2 id="design">`, `<h2 id="results">`, `<h2 id="analysis">` — same four sections, same order, with id anchors
+- `<div class="toc">` with anchor links to the five sections
+- `<h2 id="overview">`, `<h2 id="motivation">`, `<h2 id="design">`, `<h2 id="results">`, `<h2 id="analysis">` — same five sections, same order, with id anchors
 
 Tables (use `<table>` with `<thead>` / `<tbody>`):
 - Add `class="num"` to numeric `<th>` and `<td>` cells for right-aligned tabular numerals
@@ -166,6 +165,6 @@ If you find yourself thinking:
 | "I'll just give bullet points" | Prose for Motivation/Analysis; tables for Results. |
 | "The user can ask for more detail if they want" | Default is comprehensive. Over-deliver. |
 | "I should ask whether they want brief or comprehensive" | Infer from phrasing. Don't ask. |
-| "It's just a chat report so I can be loose" | Same four sections, same order, chat or file. |
+| "It's just a chat report so I can be loose" | Same five sections, same order, chat or file. |
 
-All of these mean: re-read the four required sections and the depth target for the detected mode.
+All of these mean: re-read the five required sections and the depth target for the detected mode.
